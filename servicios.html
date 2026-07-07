@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios & Tarifas | Verocenter</title>
+    <meta name="description" content="Explora la carta oficial de servicios de Verocenter: Acrílicos, Soft Gel, Permanente, Diseños Avanzados y Retiros con precios y tiempos de duración.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo brand-title">
+                <span class="logo-accent">vero</span>center
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="servicios.html" class="nav-link active">Servicios</a>
+                <a href="galeria.html" class="nav-link">Galería</a>
+                <a href="reservar.html" class="nav-link">Reservar</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="reservar.html" class="btn btn-primary btn-sm">Reserva Online</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section (Immersive video background restored) -->
+    <section id="servicios" class="services large-media-section scroll-3d" style="padding: 160px 0 100px;">
+        <div class="large-video-background">
+            <img src="assets/videos/servicios.webp" alt="Carta de Servicios" class="video-bg-media">
+        </div>
+        <div class="large-media-overlay"></div>
+        <div class="container content-overlay-container" style="flex-direction: column; width: 100%;">
+            
+            <div class="services-glass-banner text-center" style="margin-bottom: 45px;">
+                <span class="section-subtitle">Menú de Servicios</span>
+                <h2>Elegancia y Durabilidad</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.85); margin-bottom: 10px;">Carta oficial de tratamientos y precios de Verónica. Elige tu opción y agenda.</p>
+                
+                <!-- Filter tabs -->
+                <div class="filter-tabs" style="margin-top: 25px; margin-bottom: 0;">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="acrilico">Acrílico</button>
+                    <button class="filter-btn" data-filter="softgel">Soft Gel</button>
+                    <button class="filter-btn" data-filter="permanente">Permanente</button>
+                    <button class="filter-btn" data-filter="retiro">Retiros</button>
+                    <button class="filter-btn" data-filter="adicionales">Adicionales</button>
+                </div>
+            </div>
+
+            <!-- Services Grid with dark stylized cards -->
+            <div class="services-grid" id="servicesGrid">
+                
+                <!-- Card 1: Sistema Acrílico -->
+                <div class="service-card service-card-dark text-left" data-category="acrilico">
+                    <div class="service-image-placeholder gel">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">✨ Sistema Acrílico</h3>
+                        <p class="service-desc">Esculpido profesional con acrílico de alta resistencia. Elige el largo que más se adapte a tu estilo.</p>
+                        <ul class="service-sublist">
+                            <li><span>Largo S</span> <strong>$25.000</strong> <a href="reservar.html?service=acrilico-s" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo M</span> <strong>$27.000</strong> <a href="reservar.html?service=acrilico-m" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo L</span> <strong>$30.000</strong> <a href="reservar.html?service=acrilico-l" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo XL</span> <strong>$35.000</strong> <a href="reservar.html?service=acrilico-xl" class="btn-select-sub">Reservar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2: Sistema Soft Gel -->
+                <div class="service-card service-card-dark text-left" data-category="softgel">
+                    <div class="service-image-placeholder manos">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">🌸 Sistema Soft Gel</h3>
+                        <p class="service-desc">Extensiones pre-diseñadas de gel adheridas con base especial. Ligeras, ultra flexibles y con acabado natural.</p>
+                        <ul class="service-sublist">
+                            <li><span>Largo S</span> <strong>$20.000</strong> <a href="reservar.html?service=softgel-s" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo M</span> <strong>$25.000</strong> <a href="reservar.html?service=softgel-m" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo L</span> <strong>$28.000</strong> <a href="reservar.html?service=softgel-l" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo XL</span> <strong>$30.000</strong> <a href="reservar.html?service=softgel-xl" class="btn-select-sub">Reservar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3: Esmaltado Permanente -->
+                <div class="service-card service-card-dark text-left" data-category="permanente">
+                    <div class="service-image-placeholder nailart">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">🎨 Esmaltado Permanente</h3>
+                        <p class="service-desc">Limpieza completa de cutícula y esmaltado de alta duración curado en cabina UV. Uñas brillantes por más tiempo.</p>
+                        <ul class="service-sublist">
+                            <li><span>Largo S</span> <strong>$10.000</strong> <a href="reservar.html?service=perm-s" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo M</span> <strong>$15.000</strong> <a href="reservar.html?service=perm-m" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Largo L</span> <strong>$18.000</strong> <a href="reservar.html?service=perm-l" class="btn-select-sub">Reservar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 4: Manicure Hombres -->
+                <div class="service-card service-card-dark text-left" data-category="permanente">
+                    <div class="service-image-placeholder pies">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">🧔🏻 Manicure Hombres</h3>
+                        <p class="service-desc">Tratamiento estético específico de cuidado e hidratación.</p>
+                        <ul class="service-sublist">
+                            <li><span>Esmaltado Permanente</span> <strong>$10.000</strong> <a href="reservar.html?service=hombre-perm" class="btn-select-sub">Reservar</a></li>
+                        </ul>
+                        <p class="small-italic mt-2" style="font-size:0.75rem; color:rgba(255,255,255,0.65);">Incluye: Cutícula + limado + matte + aceite de cutícula.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Retiro de Sistemas -->
+                <div class="service-card service-card-dark text-left" data-category="retiro">
+                    <div class="service-image-placeholder caperuza">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">🧴 Retiro de Sistemas</h3>
+                        <p class="service-desc">Remoción segura de esmalte o extensiones protegiendo tu uña natural.</p>
+                        <ul class="service-sublist">
+                            <li><span>Acrílico y Soft Gel</span> <strong>$10.000</strong> <a href="reservar.html?service=retiro-acrilico-soft" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Por uña individual</span> <strong>$1.000</strong> <a href="reservar.html?service=retiro-unas" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Permanente</span> <strong>$6.000</strong> <a href="reservar.html?service=retiro-perm" class="btn-select-sub">Reservar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 6: Adicionales & Diseños -->
+                <div class="service-card service-card-dark text-left service-card-wide" data-category="adicionales">
+                    <div class="service-image-placeholder spa">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-name">💎 Diseños & Adicionales</h3>
+                        <p class="service-desc">Personaliza y añade valor a tus manicuras con las últimas tendencias de nail art.</p>
+                        <ul class="service-sublist">
+                            <li><span>Degrade o Francesas</span> <strong>$5.000</strong> <a href="reservar.html?service=adicional-degrade-french" class="btn-select-sub">Reservar</a></li>
+                            <li><span>1 color (sin diseño)</span> <strong>$3.000</strong> <a href="reservar.html?service=adicional-1color" class="btn-select-sub">Reservar</a></li>
+                            <li><span>1-2 colores + 2 diseño simple</span> <strong>$6.000</strong> <a href="reservar.html?service=adicional-2color-2simple" class="btn-select-sub">Reservar</a></li>
+                            <li><span>1-2 colores + 2 diseño de autor/elaborado</span> <strong>$8.000</strong> <a href="reservar.html?service=adicional-2color-2elaborado" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Mano alzada</span> <strong>$10.000</strong> <a href="reservar.html?service=adicional-mano-alzada" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Efecto 3D</span> <strong>desde $2.000</strong> <a href="reservar.html?service=adicional-3d" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Cromados</span> <strong>$3.000</strong> <a href="reservar.html?service=adicional-cromado" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Efecto Aurora</span> <strong>$6.000</strong> <a href="reservar.html?service=adicional-aurora" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Cristalería</span> <strong>desde $100</strong> <a href="reservar.html?service=adicional-cristal" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Charms</span> <strong>desde $500</strong> <a href="reservar.html?service=adicional-charms" class="btn-select-sub">Reservar</a></li>
+                            <li><span>Marmoleado</span> <strong>$9.000</strong> <a href="reservar.html?service=adicional-marmoleado" class="btn-select-sub">Reservar</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <span class="logo-accent">vero</span>center
+                </a>
+                <p>Brindando servicios estéticos de alta calidad en un entorno seguro y relajante. Diseñamos arte que puedes lucir todos los días.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/verocenter.nailslashes?igsh=dGZ2MW83eHZtN3dr" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@verocenter.nailslashes?_r=1&_t=ZS-97f0IRPYj72" target="_blank" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="reservar.html">Reservar Cita</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contacto & Ubicación</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Iquique, Tarapacá</p>
+                <p><i class="fa-solid fa-phone"></i> +56 9 7511 6975</p>
+                <p><i class="fa-envelope"></i> verocenter.nailslashes@gmail.com</p>
+                <p><i class="fa-regular fa-clock"></i> Lun - Sáb: 09:00 AM - 08:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Verocenter. Todos los derechos reservados. Desarrollado con Automatización Inteligente.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

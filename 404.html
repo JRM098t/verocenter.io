@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PÃ¡gina no encontrada | Nail Couture</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d4af37;
+            --primary-hover: #b89325;
+            --dark: #121212;
+            --light: #ffffff;
+            --light-accent: #fcf8f8;
+            --text-muted: #777777;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --radius-lg: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #fff0f2 0%, #fffbf2 50%, #f6f0ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .error-container {
+            max-width: 580px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .error-media {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 30px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            border: 2px solid var(--light);
+        }
+
+        .error-media img {
+            width: 100%;
+            display: block;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: var(--primary);
+            color: var(--light);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-media">
+            <!-- Webp error video placement -->
+            <img src="assets/videos/404_error_web.webp" alt="PÃ¡gina no encontrada">
+        </div>
+        <h1>Â¿Te has perdido?</h1>
+        <p>Lo sentimos, el enlace que intentas seguir no existe o ha sido movido temporalmente. Â¡Volvamos al salÃ³n para embellecer tus manos!</p>
+        <a href="index.html" class="btn"><i class="fa-solid fa-arrow-left"></i> Volver al Inicio</a>
+    </div>
+</body>
+</html>
+
+
+
+

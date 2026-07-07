@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración & Automatizaciones | Verocenter</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: var(--light-accent);
+            padding-top: 100px;
+        }
+        .admin-header {
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #121212 0%, #2d2d2d 100%);
+            color: var(--light);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+        .admin-header h1 {
+            color: var(--light);
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        .admin-header p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        .admin-nav {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Advanced Dashboard Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 992px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .config-card {
+            background-color: var(--light);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .config-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+        }
+        .config-card h3 i {
+            color: var(--primary);
+        }
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .helper-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            display: block;
+        }
+        .form-row-admin {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        /* Switch styling */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--light-accent);
+            padding: 12px 15px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 10px;
+        }
+        .toggle-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .3s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        
+        /* Log Table styling */
+        .logs-table-container {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            max-height: 240px;
+            margin-top: 15px;
+        }
+        .logs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            text-align: left;
+        }
+        .logs-table th, .logs-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .logs-table th {
+            background: var(--light-accent);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .logs-table tbody tr {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .logs-table tbody tr:hover {
+            background: rgba(212, 175, 55, 0.04);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .status-badge.success { background: #e6f7ed; color: #1f8b4c; }
+        .status-badge.error { background: #fdf2f2; color: #de3434; }
+        .status-badge.local { background: #e8f4fd; color: #1d72b8; }
+        
+        /* Collapsible guide card */
+        .guide-card {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            margin-bottom: 50px;
+            border: 1px solid #333;
+        }
+        .guide-card h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+        }
+        .guide-card h4 {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        .guide-card p, .guide-card ul {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #aaa;
+        }
+        .guide-card ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        .guide-card code {
+            background: #2d2d2d;
+            color: #f2a93b;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .guide-card pre {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+            border: 1px solid #3c3c3c;
+            color: #9cdcfe;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo brand-title">
+                <span class="logo-accent">vero</span>center
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Ir a la Web</a>
+                <a href="admin.html" class="nav-link active">Panel de Control</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="index.html" class="btn btn-outline btn-sm">Ver Sitio</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Admin Header Banner -->
+        <header class="admin-header">
+            <h1>Panel de Control & Automatizaciones</h1>
+            <p>Conecta la web de Verocenter con n8n, define la redirección de WhatsApp y audita el tráfico de reservas en tiempo real.</p>
+            <div class="admin-nav">
+                <a href="index.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-house"></i> Volver a Inicio</a>
+                <a href="reservar.html" class="btn btn-outline btn-sm" style="color:var(--light); border-color:rgba(255,255,255,0.3);"><i class="fa-solid fa-calendar"></i> Reservas</a>
+            </div>
+        </header>
+
+        <!-- Configuration Grid: Row 1 -->
+        <div class="dashboard-grid">
+            
+            <!-- Card 1: WhatsApp Config -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-gears"></i> Parámetros de WhatsApp</h3>
+                <p class="card-desc">Define el teléfono de destino y la plantilla que enviará el cliente por WhatsApp.</p>
+
+                <!-- Phone Config -->
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="configPhone"><i class="fa-brands fa-whatsapp"></i> Teléfono de Contacto (WhatsApp)</label>
+                    <div class="input-with-button">
+                        <input type="text" id="configPhone" value="56975116975" placeholder="Ej. 56975116975">
+                        <button class="btn btn-primary" id="savePhoneBtn">Guardar</button>
+                    </div>
+                    <small class="helper-text">Introduce sólo números con código de país. Ejemplo: 56975116975 (Chile).</small>
+                </div>
+
+                <!-- Message Template Config -->
+                <div class="form-group" style="flex-grow: 1; display: flex; flex-direction: column;">
+                    <label for="configTemplate"><i class="fa-regular fa-comment-dots"></i> Plantilla de Mensaje</label>
+                    <textarea id="configTemplate" rows="7" style="resize:vertical; flex-grow: 1; min-height: 120px;"></textarea>
+                    <small class="helper-text" style="margin-bottom: 15px;">Variables: <code>{nombre}</code>, <code>{telefono}</code>, <code>{servicio}</code>, <code>{fecha}</code>, <code>{hora}</code>, <code>{notas}</code>.</small>
+                    <button class="btn btn-primary btn-block" id="saveTemplateBtn"><i class="fa-solid fa-floppy-disk"></i> Guardar Plantilla</button>
+                </div>
+            </div>
+
+            <!-- Card 2: n8n Integration Settings -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-network-wired"></i> Conexión Webhook n8n</h3>
+                <p class="card-desc">Envía los datos de las reservas directamente a n8n en segundo plano para integraciones.</p>
+
+                <!-- Webhook URL input -->
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="webhookUrl"><i class="fa-solid fa-link"></i> URL del Webhook de n8n</label>
+                    <input type="url" id="webhookUrl" placeholder="https://primary-production.agent.n8n.cloud/webhook/..." style="width:100%;">
+                </div>
+
+                <!-- Custom Auth Token Header -->
+                <div class="form-row-admin">
+                    <div class="form-group">
+                        <label for="webhookHeaderName"><i class="fa-solid fa-key"></i> Nombre Cabecera Auth</label>
+                        <input type="text" id="webhookHeaderName" placeholder="Authorization" value="Authorization">
+                    </div>
+                    <div class="form-group">
+                        <label for="webhookHeaderValue"><i class="fa-solid fa-lock"></i> Valor Cabecera / Token</label>
+                        <input type="text" id="webhookHeaderValue" placeholder="Bearer n8n_token_..." value="">
+                    </div>
+                </div>
+
+                <!-- Status Settings & Toggles -->
+                <div class="toggle-container">
+                    <div class="toggle-label"><i class="fa-solid fa-circle-play"></i> Enviar reservas reales a n8n</div>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleSendWebhook" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <!-- Connection buttons -->
+                <div class="form-row-admin" style="margin-top: 15px;">
+                    <button class="btn btn-outline" id="saveWebhookSettingsBtn" style="padding:12px; font-size:0.85rem;"><i class="fa-solid fa-floppy-disk"></i> Guardar Config</button>
+                    <button class="btn btn-primary" id="testWebhookBtn" style="padding:12px; font-size:0.85rem;"><i class="fa-solid fa-paper-plane"></i> Probar Conexión</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid: Row 2 -->
+        <div class="dashboard-grid">
+            
+            <!-- Card 3: Traffic Auditor & Logs List -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-list-check"></i> Historial de Envío & Auditoría</h3>
+                <p class="card-desc">Registro detallado de transacciones locales y webhooks enviados a n8n. Haz clic en una fila para inspeccionar.</p>
+
+                <!-- Clear and Audit buttons -->
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.8rem; font-weight:600; color:var(--dark);">Transacciones Recientes</span>
+                    <button class="btn btn-outline" id="clearLogsBtn" style="font-size:0.75rem; padding:4px 10px; border-color:#e05b5b; color:#e05b5b;"><i class="fa-solid fa-trash-can"></i> Vaciar Registro</button>
+                </div>
+
+                <!-- Scrollable Logs Table -->
+                <div class="logs-table-container">
+                    <table class="logs-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha/Hora</th>
+                                <th>Cliente</th>
+                                <th>Servicio</th>
+                                <th>Estado n8n</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsTableBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando registro de auditoría...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Card 4: Payload Viewer & Webhook Simulators -->
+            <div class="config-card">
+                <h3><i class="fa-solid fa-terminal"></i> Payload JSON & Simulador</h3>
+                <p class="card-desc">Visualiza y simula eventos de webhooks entrantes y salientes.</p>
+
+                <div class="json-viewer-wrapper" style="flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="viewer-header">
+                        <span>Payload JSON (auditor_log)</span>
+                        <i class="fa-solid fa-circle" id="payloadIndicator" style="color: #bbb; font-size: 8px;"></i>
+                    </div>
+                    <pre class="json-code" id="jsonPayloadDisplay" style="flex-grow: 1; max-height: 200px; margin-bottom: 15px;">{
+  "status": "idle",
+  "message": "Esperando transacciones de reserva..."
+}</pre>
+                </div>
+
+                <div class="simulation-actions" style="margin-top: auto;">
+                    <span style="font-size:0.8rem; font-weight:600; color:var(--dark); display:block; margin-bottom:10px;">Simulador de Eventos de Webhook</span>
+                    <div class="form-row-admin">
+                        <button class="btn btn-outline" id="btnSimulateSuccess" style="font-size:0.75rem; padding:10px;"><i class="fa-solid fa-circle-check"></i> Webhook Confirmación</button>
+                        <button class="btn btn-outline" id="btnSimulateReminder" style="font-size:0.75rem; padding:10px;"><i class="fa-solid fa-bell"></i> Webhook Recordatorio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapsible guide node for n8n -->
+        <section class="guide-card">
+            <h3><i class="fa-solid fa-book-open"></i> Guía de Configuración para n8n</h3>
+            <p>Conectar Verocenter con n8n te permite automatizar tareas complejas, tales como agregar clientes a una base de datos (Google Sheets/Notion) o enviar un recordatorio automático por WhatsApp.</p>
+            
+            <h4>1. Crear el Workflow en n8n</h4>
+            <ul>
+                <li>Agrega un nodo <strong>Webhook</strong>.</li>
+                <li>Establece el método HTTP como <code>POST</code>.</li>
+                <li>Copia la <strong>Production URL</strong> del nodo Webhook de n8n y pégala arriba en el campo "URL del Webhook de n8n".</li>
+                <li>(Opcional) En el nodo Webhook de n8n, configura autenticación (Header Auth) e introduce las credenciales arriba en "Nombre Cabecera Auth" y "Token".</li>
+            </ul>
+
+            <h4>2. Estructura del Payload Enviado (JSON)</h4>
+            <p>Cuando un cliente solicita una reserva, la web envía automáticamente un payload POST con la siguiente estructura:</p>
+            <pre>{
+  "event": "booking_requested",
+  "timestamp": "2026-07-01T00:30:00.000Z",
+  "client": {
+    "name": "Valentina Gómez",
+    "phone": "+56912345678"
+  },
+  "booking": {
+    "service_id": "acrilico-m",
+    "service_name": "Acrílico - Largo M",
+    "price": "27.000",
+    "duration_minutes": "130",
+    "date": "2026-07-05",
+    "time": "15:00",
+    "notes": "Prefiero acabado matte."
+  },
+  "automation": {
+    "recipient_phone": "56975116975",
+    "channel": "whatsapp_api_direct",
+    "message_payload": "..."
+  }
+}</pre>
+        </section>
+
+        <!-- Floating Notification -->
+        <div class="alert-box" id="webhookAlert" style="display:none; position:fixed; bottom:20px; right:20px; z-index:1000; box-shadow:var(--shadow-medium);">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="webhookAlertMsg">Cambios guardados con éxito en LocalStorage</span>
+        </div>
+    </main>
+
+    <!-- Connect logic script -->
+    <script src="app.js"></script>
+</body>
+</html>

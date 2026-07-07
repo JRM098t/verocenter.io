@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Cita | Verocenter</title>
+    <meta name="description" content="Agenda tu cita online en Verocenter de forma interactiva y directa. Recibe confirmación automática por WhatsApp con todos los detalles.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo brand-title">
+                <span class="logo-accent">vero</span>center
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="servicios.html" class="nav-link">Servicios</a>
+                <a href="galeria.html" class="nav-link">Galería</a>
+                <a href="reservar.html" class="nav-link active">Reservar</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="reservar.html" class="btn btn-primary btn-sm">Reserva Online</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Booking Section Page (Interactive Form & Mockup with Animated Backdrop) -->
+    <section class="booking large-media-section scroll-3d" style="padding: 160px 0 100px;">
+        <div class="large-video-background">
+            <img src="assets/videos/booking-bg.webp" alt="Reserva Online" class="video-bg-media">
+        </div>
+        <div class="large-media-overlay"></div>
+        <div class="container content-overlay-container" style="flex-direction: column; width: 100%;">
+            
+            <div class="text-center" style="margin-bottom: 50px; position: relative; z-index: 3; color: var(--light);">
+                <span class="section-subtitle" style="color: var(--primary);">Agenda en un Clic</span>
+                <h1 class="font-accent" style="color: var(--light); font-size: 2.8rem; margin-top: 10px;">Solicitud de Reserva</h1>
+                <p style="color: rgba(255, 255, 255, 0.85); max-width: 600px; margin: 15px auto 0;">Establece tu servicio, día y hora favorita. Un mensaje estructurado se enviará a Verónica automáticamente.</p>
+            </div>
+
+            <div class="booking-wrapper" style="position: relative; z-index: 3; width: 100%;">
+                
+                <!-- Columna Izquierda: Formulario de Reserva -->
+                <div class="booking-form-panel">
+                    <div class="panel-header">
+                        <h2>Agenda tu cita online</h2>
+                        <p>Completa los detalles y coordina el pago por WhatsApp en un clic.</p>
+                    </div>
+                    
+                    <form id="bookingForm" class="booking-form">
+                        <div class="form-group">
+                            <label for="clientName"><i class="fa-solid fa-user"></i> Tu Nombre Completo</label>
+                            <input type="text" id="clientName" placeholder="Ej. Valentina Gómez" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clientPhone"><i class="fa-solid fa-phone"></i> Tu Teléfono / WhatsApp</label>
+                                <input type="tel" id="clientPhone" placeholder="+56 9 7511 6975" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingService"><i class="fa-solid fa-list-check"></i> Elige un Servicio</label>
+                                <select id="bookingService" required>
+                                    <option value="" disabled selected>Selecciona un tratamiento</option>
+                                    <optgroup label="✨ Sistema Acrílico">
+                                        <option value="acrilico-s" data-price="25000" data-duration="120">Acrílico - Largo S ($25.000)</option>
+                                        <option value="acrilico-m" data-price="27000" data-duration="130">Acrílico - Largo M ($27.000)</option>
+                                        <option value="acrilico-l" data-price="30000" data-duration="140">Acrílico - Largo L ($30.000)</option>
+                                        <option value="acrilico-xl" data-price="35000" data-duration="160">Acrílico - Largo XL ($35.000)</option>
+                                    </optgroup>
+                                    <optgroup label="🌸 Sistema Soft Gel">
+                                        <option value="softgel-s" data-price="20000" data-duration="90">Soft Gel - Largo S ($20.000)</option>
+                                        <option value="softgel-m" data-price="25000" data-duration="100">Soft Gel - Largo M ($25.000)</option>
+                                        <option value="softgel-l" data-price="28000" data-duration="110">Soft Gel - Largo L ($28.000)</option>
+                                        <option value="softgel-xl" data-price="30000" data-duration="120">Soft Gel - Largo XL ($30.000)</option>
+                                    </optgroup>
+                                    <optgroup label="🎨 Esmaltado Permanente">
+                                        <option value="perm-s" data-price="10000" data-duration="60">Esmaltado Permanente - Largo S ($10.000)</option>
+                                        <option value="perm-m" data-price="15000" data-duration="70">Esmaltado Permanente - Largo M ($15.000)</option>
+                                        <option value="perm-l" data-price="18000" data-duration="85">Esmaltado Permanente - Largo L ($18.000)</option>
+                                    </optgroup>
+                                    <optgroup label="🧔🏻 Para Hombres">
+                                        <option value="hombre-perm" data-price="10000" data-duration="60">Manicure Hombres Permanente ($10.000)</option>
+                                    </optgroup>
+                                    <optgroup label="🧴 Retiro de Sistemas">
+                                        <option value="retiro-acrilico-soft" data-price="10000" data-duration="45">Retiro - Acrílico / Soft Gel ($10.000)</option>
+                                        <option value="retiro-unas" data-price="1000" data-duration="15">Retiro - Por Uña ($1.000)</option>
+                                        <option value="retiro-perm" data-price="6000" data-duration="30">Retiro Permanente ($6.000)</option>
+                                    </optgroup>
+                                    <optgroup label="💎 Diseños & Adicionales">
+                                        <option value="adicional-degrade-french" data-price="5000" data-duration="30">Adicional - Degrade o Francesas ($5.000)</option>
+                                        <option value="adicional-1color" data-price="3000" data-duration="15">Adicional - 1 Color (sin diseño) ($3.000)</option>
+                                        <option value="adicional-2color-2simple" data-price="6000" data-duration="30">Adicional - 1-2 Colores + 2 Diseños Simples ($6.000)</option>
+                                        <option value="adicional-2color-2elaborado" data-price="8000" data-duration="45">Adicional - 1-2 Colores + 2 Diseños Elaborados ($8.000)</option>
+                                        <option value="adicional-mano-alzada" data-price="10000" data-duration="60">Adicional - Mano Alzada ($10.000)</option>
+                                        <option value="adicional-3d" data-price="2000" data-duration="30">Adicional - Diseño 3D ($2.000)</option>
+                                        <option value="adicional-cromado" data-price="3000" data-duration="20">Adicional - Cromados ($3.000)</option>
+                                        <option value="adicional-aurora" data-price="6000" data-duration="30">Adicional - Efecto Aurora ($6.000)</option>
+                                        <option value="adicional-cristal" data-price="100" data-duration="10">Adicional - Cristalería (desde $100)</option>
+                                        <option value="adicional-charms" data-price="500" data-duration="10">Adicional - Charms (desde $500)</option>
+                                        <option value="adicional-marmoleado" data-price="9000" data-duration="45">Adicional - Marmoleado ($9.000)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingDate"><i class="fa-solid fa-calendar-days"></i> Selecciona Fecha</label>
+                                <input type="date" id="bookingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime"><i class="fa-solid fa-clock"></i> Selecciona Hora</label>
+                                <select id="bookingTime" required>
+                                    <option value="" disabled selected>Elegir hora</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:30">01:30 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:30">04:30 PM</option>
+                                    <option value="18:00">06:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookingNotes"><i class="fa-solid fa-comment-dots"></i> ¿Deseas agregar detalles adicionales?</label>
+                            <textarea id="bookingNotes" rows="3" placeholder="Ej. Prefiero acabado matte, tengo acrílico previo a retirar, etc."></textarea>
+                        </div>
+
+                        <!-- Dynamic Summary Box -->
+                        <div class="booking-summary-box" id="bookingSummaryBox" style="display: none;">
+                            <h4>Detalle de la Reserva</h4>
+                            <div class="summary-details">
+                                <p><strong>Servicio:</strong> <span id="sumService">-</span></p>
+                                <p><strong>Fecha y Hora:</strong> <span id="sumDateTime">-</span></p>
+                                <p><strong>Duración Estimada:</strong> <span id="sumDuration">-</span></p>
+                                <hr>
+                                <p class="total-price"><strong>Total a Pagar:</strong> <span id="sumTotal">-</span></p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBookingBtn">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar Reserva por WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Columna Derecha: Vista Previa y Explicación de la Automatización -->
+                <div class="booking-info-panel">
+                    <div class="info-card-glass">
+                        <h3>¿Cómo funciona nuestra reserva?</h3>
+                        <p>Hemos integrado una comunicación directa y automatizada. Al hacer clic en el botón de reserva:</p>
+                        
+                        <ul class="automation-steps">
+                            <li>
+                                <div class="step-num">1</div>
+                                <div class="step-txt">
+                                    <strong>Recopilación de Datos</strong>
+                                    <p>Nuestra interfaz recopila el servicio y el horario deseado.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step-num">2</div>
+                                <div class="step-txt">
+                                    <strong>Formateo de Mensaje</strong>
+                                    <p>Se genera un mensaje personalizado y estructurado con todos los datos de tu turno.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step-num">3</div>
+                                <div class="step-txt">
+                                    <strong>Conexión con WhatsApp</strong>
+                                    <p>Se abre el chat de WhatsApp con Verónica de forma inmediata, facilitando la agenda.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="whatsapp-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-avatar"><i class="fa-solid fa-circle-user"></i></div>
+                                <div class="mockup-status">
+                                    <h4>Asistente Verocenter</h4>
+                                    <span>En línea (Auto-Asistente)</span>
+                                </div>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="chat-bubble received">
+                                    ¡Hola! Confirma tu cita enviando el mensaje pre-cargado.
+                                </div>
+                                <div class="chat-bubble sent" id="whatsappPreviewBubble">
+                                    (Completa el formulario para ver la vista previa del mensaje automático...)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <a href="#" class="logo">
+                    <span class="logo-accent">vero</span>center
+                </a>
+                <p>Brindando servicios estéticos de alta calidad en un entorno seguro y relajante. Diseñamos arte que puedes lucir todos los días.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/verocenter.nailslashes?igsh=dGZ2MW83eHZtN3dr" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@verocenter.nailslashes?_r=1&_t=ZS-97f0IRPYj72" target="_blank" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="reservar.html">Reservar Cita</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contacto & Ubicación</h4>
+                <p><i class="fa-solid fa-location-dot"></i> Iquique, Tarapacá</p>
+                <p><i class="fa-solid fa-phone"></i> +56 9 7511 6975</p>
+                <p><i class="fa-envelope"></i> verocenter.nailslashes@gmail.com</p>
+                <p><i class="fa-regular fa-clock"></i> Lun - Sáb: 09:00 AM - 08:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Verocenter. Todos los derechos reservados. Desarrollado con Automatización Inteligente.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
